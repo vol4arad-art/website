@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Девлятова Динара Менсуровна - Преподаватель английского языка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #0a4d3c 0%, #1a8f6e 50%, #2dd4a8 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, rgba(42, 252, 152, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(42, 252, 152, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 255, 250, 0.95));
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 20px rgba(42, 252, 152, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(42, 252, 152, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #2dd4a8;
+            box-shadow: 0 10px 30px rgba(42, 252, 152, 0.4), 0 0 20px rgba(42, 252, 152, 0.3);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(42, 252, 152, 0.6), 0 0 30px rgba(42, 252, 152, 0.5);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #00ff88, #2dd4a8, #00ff88);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #0a4d3c, #2dd4a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #1a8f6e;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .experience {
+            display: inline-block;
+            background: linear-gradient(135deg, #0a4d3c, #2dd4a8);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(42, 252, 152, 0.4);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 255, 250, 0.95));
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(42, 252, 152, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(42, 252, 152, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 30px rgba(42, 252, 152, 0.5);
+            border-color: rgba(42, 252, 152, 0.6);
+        }
+
+        .card h2 {
+            background: linear-gradient(135deg, #0a4d3c, #2dd4a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #2dd4a8;
+            padding-bottom: 10px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #2a2a2a;
+        }
+
+        .card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2dd4a8;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #0a4d3c, #1a8f6e, #2dd4a8);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(42, 252, 152, 0.4);
+            border: 1px solid rgba(42, 252, 152, 0.5);
+        }
+
+        .highlight h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 255, 250, 0.95));
+            color: #0a4d3c;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 15px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            border: 2px solid #2dd4a8;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(42, 252, 152, 0.6);
+            background: white;
+        }
+
+        .cta-button.primary {
+            background: linear-gradient(135deg, #00ff88, #2dd4a8);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.primary:hover {
+            background: linear-gradient(135deg, #2dd4a8, #00ff88);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(42, 252, 152, 0.8);
+        }
+
+        .materials-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 255, 250, 0.95));
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(42, 252, 152, 0.2);
+            margin-bottom: 30px;
+            border: 1px solid rgba(42, 252, 152, 0.3);
+        }
+
+        .materials-section h2 {
+            background: linear-gradient(135deg, #0a4d3c, #2dd4a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #0a4d3c, #2dd4a8);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(42, 252, 152, 0.3);
+        }
+
+        .tag:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(42, 252, 152, 0.5);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 255, 250, 0.95));
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(42, 252, 152, 0.2);
+            margin-bottom: 30px;
+            border: 1px solid rgba(42, 252, 152, 0.3);
+        }
+
+        .contact-section h2 {
+            background: linear-gradient(135deg, #0a4d3c, #2dd4a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2em;
+            margin-bottom: 25px;
+        }
+
+        .phone {
+            font-size: 2em;
+            font-weight: bold;
+            color: #0a4d3c;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(42, 252, 152, 0.1), rgba(45, 212, 168, 0.1));
+            border-radius: 15px;
+            display: inline-block;
+            border: 2px solid #2dd4a8;
+        }
+
+        .phone a {
+            color: #0a4d3c;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .phone a:hover {
+            color: #2dd4a8;
+            text-shadow: 0 0 10px rgba(42, 252, 152, 0.5);
+        }
+
+        footer {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 255, 250, 0.95));
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(42, 252, 152, 0.2);
+            border: 1px solid rgba(42, 252, 152, 0.3);
+        }
+
+        footer p {
+            color: #2a2a2a;
+            font-size: 1.1em;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 77, 60, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 255, 250, 0.98));
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: slideDown 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(42, 252, 152, 0.5);
+            border: 2px solid #2dd4a8;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            color: #2dd4a8;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #0a4d3c;
+            text-shadow: 0 0 10px rgba(42, 252, 152, 0.8);
+        }
+
+        .resource-link {
+            display: block;
+            background: linear-gradient(135deg, #0a4d3c, #2dd4a8);
+            color: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(42, 252, 152, 0.3);
+        }
+
+        .resource-link:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(42, 252, 152, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                padding: 40px 20px;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .phone {
+                font-size: 1.5em;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1em;
+                margin: 10px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://i.postimg.cc/qM7HcsMJ/teacher-photo.jpg" alt="Девлятова Динара Менсуровна" class="profile-photo">
+            <h1>Девлятова Динара Менсуровна</h1>
+            <p class="subtitle">Профессиональный преподаватель английского языка</p>
+            <div class="experience">Стаж более 15 лет</div>
+        </header>
+
+        <div class="materials-section">
+            <h2>🎓 Образование и Квалификация</h2>
+            <div class="tags">
+                <span class="tag">Высшее педагогическое образование, ин.яз</span>
+                <span class="tag">Кембриджский сертификат TKT</span>
+                <span class="tag">Применение ИИ в обучении</span>
+                <span class="tag">Создание игр, видео, квизов</span>
+                <span class="tag">Авторские обучающие книги</span>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>📚 Программы обучения</h2>
+                <ul>
+                    <li>Подготовка к международным экзаменам: Cambridge Starters, Movers, Flyers, KET, PET, FCE, IELTS</li>
+                    <li>Подготовка к ОГЭ и ЕГЭ</li>
+                    <li>Английский для детей и взрослых</li>
+                    <li>General English и Business English</li>
+                    <li>Уровни от A1 (начальный) до C2 (продвинутый)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🎯 Учебные материалы</h2>
+                <ul>
+                    <li>Кембриджские учебники</li>
+                    <li>Видеоматериалы</li>
+                    <li>Интерактивные упражнения</li>
+                    <li>Образовательные игры</li>
+                    <li>Квизы и тесты</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <h2>💼 Стоимость и Формат занятий</h2>
+            <p style="font-size: 1.3em; margin: 20px 0;">Длительность: от 40 до 60 минут</p>
+            <div class="price">от 1500 ₽</div>
+            <p style="font-size: 1.2em; margin-bottom: 20px;">Индивидуальные и групповые занятия</p>
+            <button class="cta-button" onclick="openResourcesModal()">📖 Интерактивные упражнения, тесты, игры</button>
+        </div>
+
+        <div class="contact-section">
+            <h2>📞 Контакты и запись на занятия</h2>
+            <p style="font-size: 1.2em; color: #2a2a2a; margin-bottom: 20px;">Свяжитесь со мной для записи на урок</p>
+            <div class="phone">
+                <a href="tel:+79067299907">+7 (906) 729-99-07</a>
+            </div>
+            <button class="cta-button primary" onclick="openContactModal()">✉️ Записаться на урок</button>
+        </div>
+
+        <footer>
+            <p>🌟 Качественное обучение английскому языку с опытным преподавателем</p>
+            <p style="margin-top: 15px; color: #1a8f6e; font-weight: 600;">Современные технологии и ИИ в обучении!</p>
+        </footer>
+    </div>
+
+    <div id="resourceModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('resourceModal')">&times;</span>
+            <h2 style="background: linear-gradient(135deg, #0a4d3c, #2dd4a8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 30px;">📚 Интерактивные материалы</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #2a2a2a;">Выберите раздел для практики:</p>
+            
+            <a href="#" class="resource-link" onclick="alert('Здесь будут интерактивные упражнения по грамматике, лексике и аудированию'); return false;">📝 Упражнения</a>
+            
+            <a href="#" class="resource-link" onclick="alert('Здесь будут тесты для проверки уровня знаний'); return false;">✅ Тесты</a>
+            
+            <a href="#" class="resource-link" onclick="alert('Здесь будут обучающие игры для изучения английского'); return false;">🎮 Игры</a>
+            
+            <a href="#" class="resource-link" onclick="alert('Здесь будут видеоуроки и материалы'); return false;">🎥 Видеоматериалы</a>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('contactModal')">&times;</span>
+            <h2 style="background: linear-gradient(135deg, #0a4d3c, #2dd4a8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 30px;">✉️ Записаться на урок</h2>
+            
+            <div style="text-align: center; padding: 20px;">
+                <p style="font-size: 1.2em; color: #2a2a2a; margin-bottom: 30px;">Для записи на урок, пожалуйста, свяжитесь со мной:</p>
+                
+                <div style="background: linear-gradient(135deg, rgba(42, 252, 152, 0.1), rgba(45, 212, 168, 0.1)); padding: 30px; border-radius: 15px; margin: 20px 0; border: 2px solid #2dd4a8;">
+                    <p style="font-size: 1.1em; color: #1a8f6e; margin-bottom: 15px;">📱 Телефон:</p>
+                    <div style="font-size: 2em; font-weight: bold; margin: 15px 0;">
+                        <a href="tel:+79067299907" style="color: #0a4d3c; text-decoration: none;">+7 (906) 729-99-07</a>
+                    </div>
+                </div>
+
+                <p style="color: #2a2a2a; margin-top: 25px; line-height: 1.8;">
+                    Я с радостью отвечу на все ваши вопросы и подберу<br>оптимальное время для занятий! 😊
+                </p>
+
+                <a href="tel:+79067299907" class="cta-button primary" style="margin-top: 25px;">📞 Позвонить сейчас</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openResourcesModal() {
+            document.getElementById('resourceModal').style.display = 'block';
+        }
+
+        function openContactModal() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const resourceModal = document.getElementById('resourceModal');
+            const contactModal = document.getElementById('contactModal');
+            
+            if (event.target == resourceModal) {
+                closeModal('resourceModal');
+            }
+            if (event.target == contactModal) {
+                closeModal('contactModal');
+            }
+        }
+    </script>
+</body>
+</html>
