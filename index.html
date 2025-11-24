@@ -18,6 +18,87 @@
             background: linear-gradient(135deg, #0a4d3c 0%, #1a8f6e 50%, #2dd4a8 100%);
             min-height: 100vh;
             position: relative;
+            padding-top: 80px;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(10, 77, 60, 0.98), rgba(26, 143, 110, 0.98));
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(42, 252, 152, 0.2);
+            border-bottom: 2px solid rgba(42, 252, 152, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(42, 252, 152, 0.5);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95em;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(42, 252, 152, 0.3);
+        }
+
+        .nav-link:hover {
+            background: rgba(42, 252, 152, 0.2);
+            box-shadow: 0 0 15px rgba(42, 252, 152, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.primary {
+            background: linear-gradient(135deg, #00ff88, #2dd4a8);
+            color: #0a4d3c;
+            border: 1px solid white;
+        }
+
+        .nav-link.primary:hover {
+            background: linear-gradient(135deg, #2dd4a8, #00ff88);
+            box-shadow: 0 0 20px rgba(42, 252, 152, 0.7);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #2dd4a8;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(42, 252, 152, 0.3);
         }
 
         body::before {
@@ -421,19 +502,69 @@
                 font-size: 1em;
                 margin: 10px 5px;
             }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                Динара Девлятова
+                <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#about" class="nav-link">👤 Обо мне</a>
+                <a href="#programs" class="nav-link">📚 Программы</a>
+                <a href="#materials" class="nav-link">🎯 Материалы</a>
+                <a href="#pricing" class="nav-link">💼 Цены</a>
+                <a href="#contact" class="nav-link">📞 Контакты</a>
+                <a href="#" class="nav-link" onclick="openResourcesModal(); return false;">📖 Упражнения</a>
+                <a href="#" class="nav-link primary" onclick="openContactModal(); return false;">✉️ Записаться</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
-        <header>
+        <header id="about">
             <img src="https://sun9-51.userapi.com/s/v1/ig2/L7qHbEcJPp3PfA-i6u-W2MaWxiuHG1BUzOR_h0BUqjP6hXPhvmCCkggrjZC1FiYBeCYY7jPdHXMfWotxRKClH80C.jpg?quality=95&as=32x28,48x41,72x62,108x93,160x138,240x207,360x311,480x415,540x467,640x553,720x622,1080x934,1280x1107,1440x1245&from=bu&cs=1440x0" alt="Девлятова Динара Менсуровна" class="profile-photo">
             <h1>Девлятова Динара Менсуровна</h1>
             <p class="subtitle">Профессиональный преподаватель английского языка</p>
             <div class="experience">Стаж более 15 лет</div>
         </header>
 
-        <div class="materials-section">
+        <div class="materials-section" id="materials">
             <h2>🎓 Образование и Квалификация</h2>
             <div class="tags">
                 <span class="tag">Высшее педагогическое образование, ин.яз</span>
@@ -444,7 +575,7 @@
             </div>
         </div>
 
-        <div class="content-grid">
+        <div class="content-grid" id="programs">
             <div class="card">
                 <h2>📚 Программы обучения</h2>
                 <ul>
@@ -468,7 +599,7 @@
             </div>
         </div>
 
-        <div class="highlight">
+        <div class="highlight" id="pricing">
             <h2>💼 Стоимость и Формат занятий</h2>
             <p style="font-size: 1.3em; margin: 20px 0;">Длительность: от 40 до 60 минут</p>
             <div class="price">от 1500 ₽</div>
@@ -476,7 +607,7 @@
             <button class="cta-button" onclick="openResourcesModal()">📖 Интерактивные упражнения, тесты, игры</button>
         </div>
 
-        <div class="contact-section">
+        <div class="contact-section" id="contact">
             <h2>📞 Контакты и запись на занятия</h2>
             <p style="font-size: 1.2em; color: #2a2a2a; margin-bottom: 20px;">Свяжитесь со мной для записи на урок</p>
             <div class="phone">
@@ -544,6 +675,11 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
         window.onclick = function(event) {
             const resourceModal = document.getElementById('resourceModal');
             const contactModal = document.getElementById('contactModal');
@@ -555,6 +691,15 @@
                 closeModal('contactModal');
             }
         }
+
+        // Закрытие меню при клике на ссылку (для мобильных)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>
